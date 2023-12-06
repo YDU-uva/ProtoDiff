@@ -1,0 +1,27 @@
+dataset: mini-imagenet
+dataset_args: {split: test}
+
+load: ./save/meta_mini-imagenet-1shot_meta-baseline-resnet12-1e-05-10/max-va.pth
+#load_encoder:  ./save/meta_mini-imagenet-1shot_meta-baseline-resnet12-5e-05-5/epoch-last.pth
+
+# Replace load with load_encoder for loading the encoder only (e.g. for testing Classifier-Baseline)
+
+transformer:
+  ema: true
+  predict_xstart: true
+  max_freq_log2: 14
+  num_frequencies: 128
+  n_embd: 512
+  encoder_depth: 1
+  decoder_depth: 1
+  n_layer: 12
+  n_head: 16
+  dropout_prob: 0.1
+  len_input: 3
+  numstep: 1
+  time: 100
+
+visualize_datasets: True
+overfit_lr: 0.00001
+overfit_iterations: 10
+loss_coff: 10.
